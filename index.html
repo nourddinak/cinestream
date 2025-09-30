@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream - Premium Movie & TV Streaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-play-circle"></i>
+                <span>CineStream</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-link" data-page="search">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </a>
+                <a href="#" class="nav-link" data-page="watch">
+                    <i class="fas fa-play"></i>
+                    <span>Watch</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="hero-section">
+                <div class="hero-content glass-effect">
+                    <h1 class="hero-title">
+                        Discover Your Next
+                        <span class="gradient-text">Favorite Movie</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Stream thousands of movies and TV shows in stunning quality. 
+                        Your entertainment journey starts here.
+                    </p>
+                    <div class="hero-search">
+                        <div class="search-container glass-effect">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="hero-search-input" placeholder="Search movies, TV shows..." class="search-input">
+                            <button class="search-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-section">
+                <div class="section-header">
+                    <h2 class="section-title">Trending Now</h2>
+                    <button class="refresh-btn glass-effect" id="refresh-trending">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+                <div class="movies-grid" id="trending-movies">
+                    <!-- Movies will be loaded here -->
+                </div>
+            </div>
+
+            <div class="featured-section">
+                <div class="section-header">
+                    <h2 class="section-title">Popular Movies</h2>
+                </div>
+                <div class="movies-grid" id="popular-movies">
+                    <!-- Movies will be loaded here -->
+                </div>
+            </div>
+
+            <div class="featured-section">
+                <div class="section-header">
+                    <h2 class="section-title">Popular TV Shows</h2>
+                </div>
+                <div class="movies-grid" id="popular-tv">
+                    <!-- TV shows will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Page -->
+        <div id="search-page" class="page">
+            <div class="search-header">
+                <div class="search-container glass-effect large">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search movies, TV shows..." class="search-input">
+                    <div class="search-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="movie">Movies</button>
+                        <button class="filter-btn" data-filter="tv">TV Shows</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-results-container">
+                <div id="search-results" class="search-results">
+                    <!-- Search results will appear here -->
+                </div>
+                <div class="no-results glass-effect" id="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No results found</h3>
+                    <p>Try searching with different keywords</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Watch Page -->
+        <div id="watch-page" class="page">
+            <div class="watch-container">
+                <div class="video-section">
+                    <div class="video-container glass-effect">
+                        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                        <div class="video-loading" id="video-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Loading video...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-info glass-effect">
+                        <h1 id="title" class="video-title">Select a movie or TV show to watch</h1>
+                        <div class="video-meta">
+                            <span class="meta-item" id="video-year"></span>
+                            <span class="meta-item" id="video-rating"></span>
+                            <span class="meta-item" id="video-genre"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls-section">
+                    <!-- Server Selection -->
+                    <div class="control-panel glass-effect">
+                        <h3 class="control-title">
+                            <i class="fas fa-server"></i>
+                            Select Server
+                        </h3>
+                        <div class="server-grid">
+                            <button id="server1" class="server-btn">Rakan</button>
+                            <button id="server2" class="server-btn">Bard</button>
+                            <button id="server3" class="server-btn">Xayah</button>
+                            <button id="server4" class="server-btn">Ekko</button>
+                            <button id="server5" class="server-btn">Ryze</button>
+                            <button id="server6" class="server-btn">Azir</button>
+                            <button id="server7" class="server-btn">Yasuo</button>
+                            <button id="server8" class="server-btn">Zed</button>
+                            <button id="server9" class="server-btn">Jinx</button>
+                            <button id="server10" class="server-btn">Akali</button>
+                            <button id="server11" class="server-btn">Sylas</button>
+                            <button id="server12" class="server-btn">Yone</button>
+                            <button id="server13" class="server-btn">Darius</button>
+                            <button id="server14" class="server-btn">Poppy</button>
+                            <button id="server15" class="server-btn">Nami</button>
+                            <button id="server16" class="server-btn">Karma</button>
+                            <button id="server17" class="server-btn">ArabHD</button>
+                            <button id="server18" class="server-btn">FaselHD</button>
+                            <button id="server19" class="server-btn">Server 45</button>
+                            <button id="server20" class="server-btn">Server 53</button>
+                            <button id="server21" class="server-btn">Server 64</button>
+                            <button id="server22" class="server-btn">Server 74</button>
+                            <button id="server23" class="server-btn">Server 75</button>
+                            <button id="server24" class="server-btn">Server 76</button>
+                            <button id="server25" class="server-btn">Server 78</button>
+                            <button id="server26" class="server-btn">Server 79</button>
+                            <button id="server27" class="server-btn">Server 82</button>
+                            <button id="server28" class="server-btn">Riven</button>
+                        </div>
+                    </div>
+
+                    <!-- Episode Selection (for TV shows) -->
+                    <div class="control-panel glass-effect" id="episode-controls" style="display: none;">
+                        <h3 class="control-title">
+                            <i class="fas fa-list"></i>
+                            Episodes
+                        </h3>
+                        <div class="episode-controls">
+                            <button class="epselect-button" id="epselect-button">
+                                <i class="fas fa-list"></i>
+                                <span>Select Episode</span>
+                            </button>
+                            <button class="nextep-button" id="nextep-button">
+                                <i class="fas fa-forward"></i>
+                                <span>Next Episode</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Episode Selection Popover -->
+    <div class="popover-container" id="popover-container">
+        <div class="popover-backdrop"></div>
+        <div class="popover-content glass-effect">
+            <div class="popover-header">
+                <button class="popover-back-button" id="popover-back-button">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 class="popover-header-title" id="popover-header-title">Select Season</h3>
+                <button class="popover-close-button" id="popover-close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popover-list-container" id="popover-list-container">
+                <div class="seasons-list" id="seasons-list">
+                    <!-- Seasons will be loaded here -->
+                </div>
+                <div class="episodes-list" id="episodes-list" style="display: none;">
+                    <!-- Episodes will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content glass-effect">
+            <div class="loading-spinner large"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
