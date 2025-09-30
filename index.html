@@ -54,7 +54,7 @@
                         <span class="gradient-text">Favorite Movie</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Stream thousands of movies and TV shows in stunning quality. 
+                        Stream thousands of movies and TV shows in stunning quality.
                         Your entertainment journey starts here.
                     </p>
                     <div class="hero-search">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="search-results-container">
                 <div id="search-results" class="search-results">
                     <!-- Search results will appear here -->
@@ -137,25 +137,53 @@
                             <div class="loading-spinner"></div>
                             <p>Loading video...</p>
                         </div>
+                        <button class="pip-button" id="pip-button" title="Picture-in-Picture">
+                            <i class="fas fa-clone"></i>
+                        </button>
+                        <button class="fullscreen-button" id="fullscreen-button" title="Fullscreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
-                    
+
                     <div class="video-info glass-effect">
-                        <h1 id="title" class="video-title">Select a movie or TV show to watch</h1>
-                        <div class="video-meta">
-                            <span class="meta-item" id="video-year"></span>
-                            <span class="meta-item" id="video-rating"></span>
-                            <span class="meta-item" id="video-genre"></span>
+                        <div class="video-header">
+                            <div>
+                                <h1 id="title" class="video-title">Select a movie or TV show to watch</h1>
+                                <div class="video-meta">
+                                    <span class="meta-item" id="video-year"></span>
+                                    <span class="meta-item" id="video-rating"></span>
+                                    <span class="meta-item" id="video-genre"></span>
+                                </div>
+                            </div>
+                            <div class="video-actions">
+                                <button class="action-btn" id="favorite-btn" title="Favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn" id="watchlist-btn" title="Add to Watchlist">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                                <button class="action-btn" id="share-btn" title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
                         </div>
+                        <div class="video-description" id="video-description"></div>
                     </div>
                 </div>
 
                 <div class="controls-section">
                     <!-- Server Selection -->
                     <div class="control-panel glass-effect">
-                        <h3 class="control-title">
-                            <i class="fas fa-server"></i>
-                            Select Server
-                        </h3>
+                        <div class="control-header" style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3 class="control-title">
+                                <i class="fas fa-server"></i>
+                                Select Server
+                            </h3>
+                            <div class="server-status" id="server-status">
+                                <div class="status-indicator"></div>
+                                <span class="status-text" id="server-status-text">Ready</span>
+                            </div>
+                        </div>
                         <div class="server-grid">
                             <button id="server1" class="server-btn">Rakan</button>
                             <button id="server2" class="server-btn">Bard</button>
@@ -203,12 +231,56 @@
                                 <i class="fas fa-forward"></i>
                                 <span>Next Episode</span>
                             </button>
+                            <button class="auto-next-btn" id="auto-next-btn">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Auto Next: OFF</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Watch History -->
+                    <div class="control-panel glass-effect">
+                        <h3 class="control-title">
+                            <i class="fas fa-history"></i>
+                            Watch History
+                        </h3>
+                        <div class="history-grid" id="watch-history">
+                            <!-- History items will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="control-panel glass-effect">
+                        <h3 class="control-title">
+                            <i class="fas fa-thumbs-up"></i>
+                            Recommendations
+                        </h3>
+                        <div class="recommendations-grid" id="recommendations">
+                            <!-- Recommendations will be loaded here -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="share-modal">
+        <div class="share-content glass-effect">
+            <h3 class="share-title">Share with friends</h3>
+            <div class="share-options">
+                <a href="#" class="share-option" id="share-twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                <a href="#" class="share-option" id="share-facebook"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+                <a href="#" class="share-option" id="share-whatsapp"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+                <a href="#" class="share-option" id="share-telegram"><i class="fab fa-telegram"></i><span>Telegram</span></a>
+            </div>
+            <div class="share-url">
+                <input type="text" id="share-url-input" readonly>
+                <button class="copy-btn" id="copy-url-btn">Copy</button>
+            </div>
+            <button class="share-close" id="share-close-btn">Close</button>
+        </div>
+    </div>
 
     <!-- Episode Selection Popover -->
     <div class="popover-container" id="popover-container">
